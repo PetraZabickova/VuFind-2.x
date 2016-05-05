@@ -301,6 +301,13 @@ Series:
       - [and, 50]
       - [or, ~]
 
+Inspiration:
+  DismaxFields:
+    - inspiration^100
+  QueryFields:
+    inspiration:
+      -  [onephrase, 500]
+
 AllFields:
   DismaxFields:
     - title_short^750
