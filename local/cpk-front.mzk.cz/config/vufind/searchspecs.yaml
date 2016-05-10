@@ -136,12 +136,15 @@
 # These searches use Dismax when possible:
 Author:
   DismaxFields:
+    - author^150
     - author_search^150
     - author^100
     - author_fuller^50
     - author2
+    - author_viz
     - author_additional
     - author_find
+    - corporation_viz
   DismaxParams:
     - [bq, "inspiration:top_results^1"]
   QueryFields:
@@ -161,6 +164,10 @@ Author:
       - [onephrase, 100]
       - [and, 50]
       - [or, ~]
+    author_viz:  
+      - [onephrase, 100]
+      - [and, 50]
+      - [or, ~]
     author_additional:
       - [onephrase, 100]
       - [and, 50]
@@ -169,7 +176,11 @@ Author:
       - [onephrase, 100]
       - [and, 50]
       - [or, ~]
-
+    corporation_viz:  
+      - [onephrase, 100]
+      - [and, 50]
+      - [or, ~]
+      
 ISN:
   DismaxFields:
     - isbn
@@ -191,6 +202,8 @@ Subject:
     - geographic^50
     - genre^50
     - era
+    - subject_viz
+    - genre_viz
   DismaxParams:
     - [bq, "inspiration:top_results^1"]
   QueryFields:
@@ -213,7 +226,14 @@ Subject:
     era:
       - [and, 100]
       - [or, ~]
-
+    subject_viz  
+      - [onephrase, 200]
+      - [and, 100]
+      - [or, ~]
+    genre_viz
+      - [onephrase, 200]
+      - [and, 100]
+      - [or, ~]
 Inspiration:
   DismaxFields:
     - inspiration
@@ -319,12 +339,18 @@ AllFields:
     - series^50
     - series2^30
     - author_search^700
+    - author^700
+    - author2^500
+    - author_viz^400
+    - corporation_viz^300
     - author_fuller^150
     - contents^10
     - topic_unstemmed^550
     - topic^500
     - geographic^300
     - genre^300
+    - subject_viz^200
+    - genre_viz^200
     - publishDate_txt_mv^50
     - allfields_unstemmed^10
     - fulltext_unstemmed^10
@@ -360,11 +386,21 @@ AllFields:
     author_search:
       - [onephrase, 300]
       - [and, 250]
+    author:
+      - [onephrase, 300]
+      - [and, 250]
+    author2:
+      - [onephrase, 200]
+      - [and, 250]  
+    author_viz:
+      - [onephrase, 100]
+      - [and, 50]  
+    corporation_viz:
+      - [onephrase, 100]
+      - [and, 50]  
     author_fuller:
       - [onephrase, 150]
       - [and, 125]
-    author2:
-      - [and, 50]
     author_additional:
       - [and, 50]
     contents:
@@ -378,6 +414,10 @@ AllFields:
       - [onephrase, 300]
     genre:
       - [onephrase, 300]
+    subject_viz:
+      - [onephrase, 250]
+    genre_viz:  
+    - [onephrase, 250]  
     allfields_unstemmed:
       - [or, 10]
     fulltext_unstemmed:
@@ -427,15 +467,24 @@ adv_search_author_corporation:
     authorCorporation_search_txt_mv:
       - [onephrase, 100]
       - [and, 50]
-      - [or, ~]
-
+    author_viz:  
+      - [onephrase, 100]
+      - [and, 50]
+    corporation_viz:
+      - [onephrase, 100]
+      - [and, 50]  
 adv_search_subject_keywords:
   QueryFields:
     subjectKeywords_search_txt_mv:
       - [onephrase, 100]
       - [and, 50]
       - [or, ~]
-
+    subject_viz:
+      - [onephrase, 100]
+      - [and, 50] 
+    genre_viz:  
+      - [onephrase, 100]
+      - [and, 50] 
 adv_search_source_title:
   QueryFields:
     sourceTitle_search_txt_mv:
